@@ -174,10 +174,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         jTextField3.setEditable(false);
     }//GEN-LAST:event_formComponentShown
-
+    //Metodo cuando se presiono boton
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if ((!jTextField1.getText().equals(""))&&(!jTextField2.getText().equals(""))) {
-            
+            DecodificadorBiologia.secuencia1=jTextField1.getText();
+            DecodificadorBiologia.secuencia2=jTextField2.getText();
+            DecodificadorBiologia.generarrespuesta();
+            jTextField3.setText(DecodificadorBiologia.resultadofinal);
         }
         else{
             JOptionPane.showMessageDialog(null, "Una secuencia esta vacia, debe ingresar las dos secuencias");

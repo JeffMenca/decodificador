@@ -13,16 +13,21 @@ public class DecodificadorBiologia {
 
     //Variables estaticas
     static Scanner teclado = new Scanner(System.in);
-    static String secuencia1, secuencia2, resultadofinal = "", resultadopendiente="";
+    public static String secuencia1, secuencia2, resultadofinal = "", resultadopendiente="";
     static int contadorcoincidencias = 0, contadorcoincidencias2 = 0;
 
     //Metodo Main
     public static void main(String[] args) {
-        System.out.println("Decodificador de ADN");
-        System.out.println("Ingrese la primera secuencia de ADN");
-        secuencia1 = teclado.nextLine();
-        System.out.println("Ingrese la segunda secuencia de ADN");
-        secuencia2 = teclado.nextLine();
+        InterfazGrafica interfaz=new InterfazGrafica();
+        interfaz.setLocationRelativeTo(null);
+        interfaz.setVisible(true);
+  
+    }
+    public static void generarrespuesta() {
+        resultadofinal = "";
+        resultadopendiente="";
+        contadorcoincidencias = 0;
+        contadorcoincidencias2 = 0;
         char array1[] = secuencia1.toCharArray();
         char array2[] = secuencia2.toCharArray();
         while (contadorcoincidencias2 < array1.length) {
@@ -54,16 +59,8 @@ public class DecodificadorBiologia {
                 resultadofinal = resultadopendiente;
             }
         }
-        limpiar();
-        //Resultado
-        System.out.println("El conjunto ordenado de bases adyacentes de mayor tamaño entre los ADNS es " + "'" + resultadofinal + "'");
-    }
-
-    //Metodo para limpiar pantalla
-    public static void limpiar() {
-        //Caracteres por imprimir
-        System.out.print("\033[H\033[2J");
-        //Metodo flush para imprimir los caracteres en pantalla
-        System.out.flush();
+         if (resultadopendiente.length() > resultadofinal.length()) {
+                resultadofinal = resultadopendiente;
+            }
     }
 }
